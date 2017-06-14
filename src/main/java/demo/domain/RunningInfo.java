@@ -1,6 +1,7 @@
 package demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -11,7 +12,7 @@ import java.util.Date;
 import java.util.Random;
 
 @Table(name = "RUNNING_ANALYSIS")
-@JsonInclude(JsonInclude.Include.ALWAYS)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Entity
 @Data
 public class RunningInfo {
@@ -20,19 +21,43 @@ public class RunningInfo {
     @GeneratedValue
     private Long Id;
 
+
+
+    @JsonProperty("runningId")
     private String runningId;
     public enum HealthWarningLevel{
         ERROR, LOW, NORMAL, HIGH;
     }
 
+    @JsonIgnore
     private double latitude;
+    @JsonIgnore
     private double longitude;
 
+    @JsonIgnore
     private double runningDistance;
     private int heartRate = 0;
     private HealthWarningLevel healthWarningLevel = HealthWarningLevel.ERROR;
     private double totalRunningTime;
+
+    @JsonIgnore
     private Date timestamp = new Date();
+
+    @JsonProperty("userId")
+    public Long getId(){
+        return this.Id;
+    }
+
+    @JsonProperty("userName")
+    public String getUserName() {
+        return userInfo.getUsername();
+    }
+
+
+    @JsonProperty("userAddress")
+    public String getUserAddress() {
+        return userInfo.getAddress();
+    }
 
 
     public void generateHeartRate() {

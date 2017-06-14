@@ -13,8 +13,8 @@ public class UserInfo {
     private String address;
 
     public UserInfo(){
-        username = "Jon Doe";
-        address = "0 Main street";
+        username = "";
+        address = "";
     }
 
     public UserInfo(String username, String address) {
@@ -22,11 +22,3 @@ public class UserInfo {
         this.address = address;
     }
 }
-
-/*
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
- */

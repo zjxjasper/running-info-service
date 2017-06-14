@@ -19,14 +19,14 @@ public class RunningInfoRestController {
         this.runningInfoService = runningInfoService;
     }
 
-    @RequestMapping(value = "/runningInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void upload(@RequestBody List<RunningInfo> runningInfos){
         this.runningInfoService.saveRunningInfos(runningInfos);
     }
 
 
-    @RequestMapping(value = "/purge", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/all", method = RequestMethod.POST)
     public void purge() {
         this.runningInfoService.deleteAll();
     }
@@ -37,7 +37,7 @@ public class RunningInfoRestController {
     }
 
 
-    @RequestMapping(value = "/delete/{runningId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{runningId}", method = RequestMethod.POST)
     public void deleteByRunningId(@PathVariable String runningId) {
         this.runningInfoService.deleteByRunningId(runningId);
     }
