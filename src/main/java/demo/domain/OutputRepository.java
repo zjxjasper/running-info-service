@@ -8,12 +8,13 @@ import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.util.List;
 
-@RepositoryRestResource(path = "runningInfoRepo")
-public interface RunningInfoRepository extends JpaRepository<RunningInfo, Long> {
 
-    @RestResource(rel = "PageByWarning")
-    Page<RunningInfo> findAllByOrderByHealthWarningLevelDescHeartRateDesc(Pageable pageable);
+@RepositoryRestResource(path = "outputRepo")
+public interface OutputRepository extends JpaRepository<Output,Long> {
+
+    @RestResource(rel = "findAllByWarning")
+    Page<Output> findAllByOrderByHealthWarningLevelDescHeartRateDesc(Pageable pageable);
 
     @RestResource(rel = "findByRunningId")
-    List<RunningInfo> findAllByRunningId(String runningId);
+    List<Output> findAllByRunningId(String runningId);
 }

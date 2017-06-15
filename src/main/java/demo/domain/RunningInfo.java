@@ -93,4 +93,5 @@ public class RunningInfo {
         else if (heartRate > 120) return HealthWarningLevel.HIGH;
         else return HealthWarningLevel.ERROR;
     }
+
 }
